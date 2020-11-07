@@ -5,34 +5,27 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float moveSpeed = 5;
-    // Use this for initialization
-    //void Start () {
-    //       rigidbody.AddForce(0, 200, 500);
-    //}
+    public float moveSpeed = 1000000.0f;
+
+    private Rigidbody2D rb2d;
+    void Start () {
+        rb2d = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-        if (Input.GetKey(KeyCode.D))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        float moveHorizontal = Input.GetAxis("Horizontal") * moveSpeed;
+        float moveVertical = Input.GetAxis("Vertical") * moveSpeed;
 
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        moveHorizontal *= Time.deltaTime;
+        moveVertical *= Time.deltaTime;
 
-        }if (Input.GetKey(KeyCode.W))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.x);
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+    
+        rb2d.AddForce(movement);
+       
 
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.x);
-
-        }
+   
     }
 }
