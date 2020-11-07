@@ -6,11 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed;
-
     private Rigidbody2D rb2d;
-
-
-
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -25,16 +21,10 @@ public class PlayerMovement : MonoBehaviour
         moveVertical *= Time.deltaTime;
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        faceMouse();
+    
         rb2d.AddForce(movement);
        
 
    
-    }
-
-    void faceMouse()
-    {
-
     }
 }
