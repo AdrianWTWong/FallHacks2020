@@ -23,8 +23,5 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
     
         rb2d.AddForce(movement);
-       
-
-   
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 5f;
+    public float moveSpeed;
     private Rigidbody2D rb;
     private Vector2 movement;
 
@@ -24,10 +24,11 @@ public class EnemyBehavior : MonoBehaviour
         rb.rotation = angle;
         direction.Normalize();
         movement = direction;
-    }
-    void fixedUpdate() {
         moveEnemy(movement);
     }
+    //private void fixedUpdate() {
+        
+    //}
     void moveEnemy(Vector2 direction) {
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
     }
